@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../assets/style/Fruity.css";
 
 const GitHubProfileExplorer: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -28,27 +29,31 @@ const GitHubProfileExplorer: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>GitHub Profile Explorer</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="profile-explorer-container">
+      <h1 className="fruity-title">🍇 GitHub Profile Explorer 🍉</h1>
+      <form onSubmit={handleSubmit} className="fruity-form">
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter GitHub Username"
+          className="fruity-input"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="fruity-button">
+          🍓 Search 🍓
+        </button>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="fruity-error">{error}</p>}
 
       {profileData && (
-        <div>
+        <div className="profile-details fruity-card">
           <h2>{profileData.name}</h2>
           <img
             src={profileData.avatar_url}
             alt={profileData.name}
             width="150"
+            className="fruity-avatar"
           />
           <p>{profileData.bio}</p>
           <p>Followers: {profileData.followers}</p>
@@ -58,8 +63,9 @@ const GitHubProfileExplorer: React.FC = () => {
             href={profileData.html_url}
             target="_blank"
             rel="noopener noreferrer"
+            className="fruity-link"
           >
-            View Profile
+            View Profile 🍍
           </a>
         </div>
       )}

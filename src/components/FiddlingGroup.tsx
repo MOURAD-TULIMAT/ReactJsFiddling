@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import GitHubProfileExplorer from "../pages/GitHubProfileExplorer";
+import "../assets/style/Fruity.css";
 
 function FiddlingGroup() {
   const [showList, setShowList] = useState(true);
@@ -12,7 +13,7 @@ function FiddlingGroup() {
 
   const handleBackClick = () => {
     setShowList(true);
-    navigate(-1); // Navigate back to the previous route
+    navigate(-1);
   };
 
   const items = [
@@ -25,44 +26,51 @@ function FiddlingGroup() {
 
   return (
     <>
-      <ul className="list-group-item">
-        {showList ? (
-          <>
-            <Link
-              to="ReactJsFuddling/FiddlingGroup/github-explorer"
-              onClick={handleExplorerClick}
-            >
-              GitHub Profile Explorer
-            </Link>
-            {items.map((item, index) => (
-              <li key={index} className="list-group-item">
-                <a
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </>
-        ) : (
-          <>
-            <button onClick={handleBackClick} className="btn btn-secondary">
-              Back
-            </button>
-            <Link to="ReactJsFuddling/FiddlingGroup/github-explorer">
-              GitHub Profile Explorer
-            </Link>
-          </>
-        )}
-      </ul>
-      <Routes>
-        <Route
-          path="ReactJsFuddling/FiddlingGroup/github-explorer"
-          element={<GitHubProfileExplorer />}
-        />
-      </Routes>
+      <div className="fiddling-container">
+        <ul className="fiddling-list">
+          {showList ? (
+            <>
+              <Link
+                to="ReactJsFuddling/FiddlingGroup/github-explorer"
+                onClick={handleExplorerClick}
+                className="fruity-link"
+              >
+                🍇 GitHub Profile Explorer 🍉
+              </Link>
+              {items.map((item, index) => (
+                <li key={index} className="fiddle-item fruity-item">
+                  <a
+                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fruity-link"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </>
+          ) : (
+            <>
+              <button onClick={handleBackClick} className="fruity-button">
+                🍓 Back 🍓
+              </button>
+              <Link
+                to="ReactJsFuddling/FiddlingGroup/github-explorer"
+                className="fruity-link"
+              >
+                🍇 GitHub Profile Explorer 🍉
+              </Link>
+            </>
+          )}
+        </ul>
+        <Routes>
+          <Route
+            path="ReactJsFuddling/FiddlingGroup/github-explorer"
+            element={<GitHubProfileExplorer />}
+          />
+        </Routes>
+      </div>
     </>
   );
 }
