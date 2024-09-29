@@ -31,7 +31,7 @@ function FiddlingGroup() {
           {showList ? (
             <>
               <Link
-                to="ReactJsFuddling/FiddlingGroup/github-explorer"
+                to="ReactJsFiddling/FiddlingGroup/github-explorer"
                 onClick={handleExplorerClick}
                 className="fruity-link"
               >
@@ -56,7 +56,7 @@ function FiddlingGroup() {
                 🍓 Back 🍓
               </button>
               <Link
-                to="ReactJsFuddling/FiddlingGroup/github-explorer"
+                to="ReactJsFiddling/FiddlingGroup/github-explorer"
                 className="fruity-link"
               >
                 🍇 GitHub Profile Explorer 🍉
@@ -66,7 +66,7 @@ function FiddlingGroup() {
         </ul>
         <Routes>
           <Route
-            path="ReactJsFuddling/FiddlingGroup/github-explorer"
+            path="ReactJsFiddling/FiddlingGroup/github-explorer"
             element={<GitHubProfileExplorer />}
           />
         </Routes>
