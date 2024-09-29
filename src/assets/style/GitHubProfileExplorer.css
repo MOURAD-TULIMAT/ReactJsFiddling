@@ -1,0 +1,66 @@
+/* Make the entire page have a dark background and text colors */
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.profile-explorer-container {
+  background-color: #1c1c1e;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.profile-details {
+  transition: transform 0.2s ease-in-out;
+}
+
+.profile-details:hover {
+  transform: scale(1.05);
+}
+
+.search-form {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.search-form .form-control {
+  transition: transform 0.3s ease-in-out;
+}
+
+.search-form .form-control:hover {
+  transform: scale(1.05);
+}
+
+.profile-explorer-container .btn {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-explorer-container .btn:hover {
+  background-color: #343a40;
+  transform: scale(1.1);
+}
+
+/* Ensuring the search form appears with a fade-in-down animation */
+input.form-control {
+  animation: fadeInDown 1s;
+}
+
+/* Adding a shake animation for error messages */
+@keyframes shakeX {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+p.text-danger {
+  animation: shakeX 0.5s ease-in-out;
+}
