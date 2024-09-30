@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useTheme } from "../assets/ThemeContext"; // Access theme context
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/style/GitHubProfileExplorer.css"; // For additional custom styles
 
 const GitHubProfileExplorer: React.FC = () => {
+  const { theme } = useTheme(); // Access the current theme
   const [username, setUsername] = useState<string>("");
   const [profileData, setProfileData] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -30,8 +31,12 @@ const GitHubProfileExplorer: React.FC = () => {
   };
 
   return (
-    <div className="container-fluid bg-dark min-vh-100 d-flex justify-content-center align-items-center text-light">
-      <div className="profile-explorer-container p-4 bg-dark rounded shadow-lg animate__animated animate__fadeIn">
+    <div
+      className={`container-fluid min-vh-100 d-flex justify-content-center align-items-center ${
+        theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"
+      }`}
+    >
+      <div className="profile-explorer-container p-4 rounded shadow-lg animate__animated animate__fadeIn">
         <h1 className="text-center mb-4">GitHub Profile Explorer</h1>
         <form
           onSubmit={handleSubmit}
@@ -42,11 +47,15 @@ const GitHubProfileExplorer: React.FC = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter GitHub Username"
-            className="form-control w-50 me-2 animate__animated animate__fadeInDown"
+            className={`form-control w-50 me-2 animate__animated animate__fadeInDown ${
+              theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"
+            }`}
           />
           <button
             type="submit"
-            className="btn btn-outline-light animate__animated animate__fadeInRight"
+            className={`btn ${
+              theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
+            } animate__animated animate__fadeInRight`}
           >
             Search
           </button>
@@ -75,7 +84,9 @@ const GitHubProfileExplorer: React.FC = () => {
               href={profileData.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline-light mt-3"
+              className={`btn ${
+                theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
+              } mt-3`}
             >
               View Profile
             </a>

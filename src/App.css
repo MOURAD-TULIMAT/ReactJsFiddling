@@ -1,0 +1,16 @@
+body {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .container-fluid {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  button {
+    transition: transform 0.3s;
+  }
+  
+  button:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+  }
+  

@@ -1,10 +1,11 @@
+import React, { useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useTheme } from "../assets/ThemeContext"; // Access theme context
 import GitHubProfileExplorer from "../pages/GitHubProfileExplorer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/style/FiddlingGroup.css";
 
 function FiddlingGroup() {
+  const { theme } = useTheme(); // Access the current theme
   const [showList, setShowList] = useState(true);
   const navigate = useNavigate();
 
@@ -26,58 +27,78 @@ function FiddlingGroup() {
   ];
 
   return (
-    <div className="container my-5 text-light">
-      <div className="fiddling-container p-4 bg-dark rounded shadow-lg">
-        {showList ? (
-          <>
-            <Link
-              to="ReactJsFiddling/FiddlingGroup/github-explorer"
-              onClick={handleExplorerClick}
-              className="btn btn-outline-light mb-4 w-100 animate__animated animate__fadeIn"
-            >
-              GitHub Profile Explorer
-            </Link>
-            <ul className="list-group list-group-flush">
-              {items.map((item, index) => (
-                <li
-                  key={index}
-                  className="list-group-item bg-dark text-light border-light animate__animated animate__fadeInUp"
-                >
-                  <a
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-decoration-none text-light"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <>
+    <div
+      className={`container my-5 ${
+        theme === "dark" ? "text-light" : "text-dark"
+      }`}
+    >
+      <div
+        className={`fiddling-container p-4 rounded shadow-lg ${
+          theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"
+        }`}
+      >
+        <div className="d-flex justify-content-between mb-4">
+          {!showList && (
             <button
               onClick={handleBackClick}
-              className="btn btn-outline-light mb-4 animate__animated animate__fadeInLeft"
+              className={`btn ${
+                theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
+              } animate__animated animate__fadeInLeft`}
             >
               Back
             </button>
+          )}
+
+          {showList ? (
             <Link
               to="ReactJsFiddling/FiddlingGroup/github-explorer"
-              className="btn btn-outline-light animate__animated animate__fadeInRight"
+              onClick={handleExplorerClick}
+              className={`btn ${
+                theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
+              } animate__animated animate__fadeIn`}
             >
               GitHub Profile Explorer
             </Link>
-          </>
-        )}
+          ) : (
+            <h1 className="animate__animated animate__fadeIn">
+              GitHub Profile Explorer
+            </h1>
+          )}
+        </div>
+
+        {showList ? (
+          <ul className="list-group list-group-flush">
+            {items.map((item, index) => (
+              <li
+                key={index}
+                className={`list-group-item ${
+                  theme === "dark"
+                    ? "bg-dark text-light border-light"
+                    : "bg-light text-dark border-dark"
+                } animate__animated animate__fadeInUp`}
+              >
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-decoration-none ${
+                    theme === "dark" ? "text-light" : "text-dark"
+                  }`}
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        <Routes>
+          <Route
+            path="ReactJsFiddling/FiddlingGroup/github-explorer"
+            element={<GitHubProfileExplorer />}
+          />
+        </Routes>
       </div>
-      <Routes>
-        <Route
-          path="ReactJsFiddling/FiddlingGroup/github-explorer"
-          element={<GitHubProfileExplorer />}
-        />
-      </Routes>
     </div>
   );
 }
