@@ -91,13 +91,6 @@ function FiddlingGroup() {
             ))}
           </ul>
         ) : null}
-
-        <Routes>
-          <Route
-            path="ReactJsFiddling/FiddlingGroup/github-explorer"
-            element={<GitHubProfileExplorer />}
-          />
-        </Routes>
       </div>
     </div>
   );
