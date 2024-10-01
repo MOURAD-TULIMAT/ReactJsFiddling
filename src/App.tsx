@@ -19,7 +19,7 @@ function AppContent() {
         style={{ width: "215px" }}
       >
         <h4 className="mb-4">Fiddling Items</h4>
-        <Link to="githubexplorer">
+        <Link to="ReactJsFiddling/github-explorer">
           <button
             className={`btn ${
               theme === "dark" ? "btn-outline-dark" : "btn-outline-light"
@@ -53,7 +53,10 @@ function AppContent() {
 
         {/* Routes */}
         <Routes>
-          <Route path="githubexplorer" element={<GitHubProfileExplorer />} />
+          <Route
+            path="ReactJsFiddling/github-explorer"
+            element={<GitHubProfileExplorer />}
+          />
         </Routes>
       </div>
     </div>
